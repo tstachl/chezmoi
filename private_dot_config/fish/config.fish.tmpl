@@ -6,12 +6,13 @@ fundle plugin "pure-fish/pure"
 fundle init
 
 if status --is-interactive
-  if not test -e "$HOME/.ssh/id_thomas"
-    yadm decrypt
+  if not test -e "$HOME/key.txt"
+    age --decrypt --output "$HOME/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
+    chmod 600 "$HOME/key.txt"
   end
 
   if ping -c1 -W1 1.1.1.1 >/dev/null 2>&1
-    yadm pull
+    chezmoi update
   end
 end
 
