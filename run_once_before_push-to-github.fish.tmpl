@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+
+begin
+  cd {{ .chezmoi.sourceDir }}
+  git remote set-url origin \
+    $(string replace \
+    "https://github.com/" \
+    "git@github.com:" \
+    $(git remote get-url origin))
+end
