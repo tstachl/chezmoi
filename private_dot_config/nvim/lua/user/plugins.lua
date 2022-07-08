@@ -11,10 +11,11 @@ return packer.startup(function(use)
   -- My plugins here
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use {
-    "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-    config = function() require("user.plugins.autopairs") end
-  }
+  -- todo: fix issue with autopairs
+  -- use {
+  --   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+  --   config = function() require("user.plugins.autopairs") end
+  -- }
 
   use {
     "xiyaowong/nvim-transparent",
