@@ -8,6 +8,23 @@ end
 return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
+  -- autocomplete engine plugins
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
+      { "hrsh7th/cmp-cmdline" },
+      { "saadparwaiz1/cmp_luasnip" },
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" },
+      { "L3MON4D3/LuaSnip" }, --snippet engine
+      { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
+      { "f3fora/cmp-spell" },
+    },
+    config = function() require("user.plugins.cmp") end
+  }
+
   -- My plugins here
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
@@ -70,22 +87,6 @@ return packer.startup(function(use)
     config = function() require("user.plugins.lualine") end
   }
 
-  -- autocomplete engine plugins
-  use {
-    "hrsh7th/nvim-cmp",
-    requires = {
-      { "hrsh7th/cmp-buffer" },
-      { "hrsh7th/cmp-path" },
-      { "hrsh7th/cmp-cmdline" },
-      { "saadparwaiz1/cmp_luasnip" },
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "hrsh7th/cmp-nvim-lua" },
-      { "L3MON4D3/LuaSnip" }, --snippet engine
-      { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
-      { "f3fora/cmp-spell" },
-    },
-    config = function() require("user.plugins.cmp") end
-  }
 
   -- LSP
   use {
