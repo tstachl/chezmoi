@@ -106,15 +106,15 @@ return packer.startup(function(use)
     config = function() require("user.plugins.telescope") end
   }
 
-  -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    requires = {
-      { "JoosepAlviste/nvim-ts-context-commentstring" },
-    },
-    run = ":TSUpdate",
-    config = function() require("user.plugins.treesitter") end
-  }
+  -- Treesitter todo: some issue with TSUpdate after install
+  -- use {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   requires = {
+  --     { "JoosepAlviste/nvim-ts-context-commentstring" },
+  --   },
+  --   run = ":TSUpdate",
+  --   config = function() require("user.plugins.treesitter") end
+  -- }
 
   -- -- Git
   -- use "lewis6991/gitsigns.nvim"
