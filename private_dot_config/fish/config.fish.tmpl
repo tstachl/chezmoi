@@ -35,7 +35,7 @@ if status --is-interactive
     chmod 600 "$HOME/key.txt"
   end
 
-  if ping -c1 -W1 1.1.1.1 >/dev/null 2>&1
+  if wget -q --spider http://google.com
     chezmoi update
   end
 end
