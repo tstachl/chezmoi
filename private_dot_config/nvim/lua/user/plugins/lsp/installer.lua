@@ -4,7 +4,7 @@ if not ok then
 end
 
 local lspconfig = require("lspconfig")
-local servers = { "jsonls", "sumneko_lua", "rust_analyzer" }
+local servers = { "jsonls", "sumneko_lua", "rust_analyzer", "dockerls", "astro" }
 
 installer.setup {
   ensure_installed = servers
