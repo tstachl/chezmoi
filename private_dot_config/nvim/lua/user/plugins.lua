@@ -8,6 +8,15 @@ end
 return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used by a lot of plugins
+  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+
+  -- Colorschemes
+  use {
+    "cocopon/iceberg.vim",
+    config = function() require("user.plugins.colorscheme") end
+  }
+
   -- autocomplete engine plugins
   use {
     "hrsh7th/nvim-cmp",
@@ -25,14 +34,31 @@ return packer.startup(function(use)
     config = function() require("user.plugins.cmp") end
   }
 
-  -- My plugins here
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  -- todo: fix issue with autopairs
-  -- use {
-  --   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-  --   config = function() require("user.plugins.autopairs") end
-  -- }
+  -- Treesitter todo: some issue with TSUpdate after install
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    requires = {
+      { "JoosepAlviste/nvim-ts-context-commentstring" },
+    },
+    -- run = ":TSUpdate",
+    config = function() require("user.plugins.treesitter") end
+  }
+
+  -- LSP
+  use {
+    "neovim/nvim-lspconfig",
+    requires = {
+      { "williamboman/nvim-lsp-installer" },
+    },
+    config = function() require("user.plugins.lsp") end
+  }
+  -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+  -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+
+  use {
+    "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+    config = function() require("user.plugins.autopairs") end
+  }
 
   use {
     "xiyaowong/nvim-transparent",
@@ -64,7 +90,6 @@ return packer.startup(function(use)
     "akinsho/toggleterm.nvim",
     config = function() require("user.plugins.toggleterm") end
   }
-  -- use "akinsho/toggleterm.nvim"
   -- use "ahmedkhalf/project.nvim"
   -- use "lewis6991/impatient.nvim"
   -- use "lukas-reineke/indent-blankline.nvim"
@@ -75,29 +100,10 @@ return packer.startup(function(use)
     config = function() require("user.plugins.whichkey") end
   }
 
-  -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use {
-    "cocopon/iceberg.vim",
-    config = function() require("user.plugins.colorscheme") end
-  }
-
   use {
     "nvim-lualine/lualine.nvim",
     config = function() require("user.plugins.lualine") end
   }
-
-
-  -- LSP
-  use {
-    "neovim/nvim-lspconfig",
-    requires = {
-      { "williamboman/nvim-lsp-installer" },
-    },
-    config = function() require("user.plugins.lsp") end
-  }
-  -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- Telescope
   use {
@@ -108,18 +114,8 @@ return packer.startup(function(use)
     config = function() require("user.plugins.telescope") end
   }
 
-  -- Treesitter todo: some issue with TSUpdate after install
-  -- use {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   requires = {
-  --     { "JoosepAlviste/nvim-ts-context-commentstring" },
-  --   },
-  --   run = ":TSUpdate",
-  --   config = function() require("user.plugins.treesitter") end
-  -- }
-
-  -- -- Git
-  -- use "lewis6991/gitsigns.nvim"
+  -- Git
+  use "lewis6991/gitsigns.nvim"
 
   -- VimWiki
   use {

@@ -27,6 +27,12 @@ local packer = require("packer")
 
 -- Have packer use a popup window
 packer.init {
+  ensure_dependencies = true,
+  git = {
+    cmd = "git",
+    depth = 1,
+    clone_timeout = 600
+  },
   display = {
     open_fn = function()
       return require("packer.util").float { border = "rounded" }
