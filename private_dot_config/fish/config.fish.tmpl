@@ -30,6 +30,8 @@ set --universal pure_begin_prompt_with_current_directory false
 
 alias ghic="gh issue create --assignee \"@me\" --body \"\" --title"
 
+fish_add_path ~/.cargo/bin
+
 # make sure everything is up to date
 if status --is-interactive
   if not test -e "$HOME/key.txt"
