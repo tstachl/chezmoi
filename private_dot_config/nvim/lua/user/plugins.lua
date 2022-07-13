@@ -131,6 +131,14 @@ return packer.startup(function(use)
     end
   }
 
+  -- Rust
+  use {
+    "simrat39/rust-tools.nvim",
+    config = function()
+      require('rust-tools').setup({})
+    end
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer.bootstrap then
